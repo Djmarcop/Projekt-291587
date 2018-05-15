@@ -1,0 +1,38 @@
+* Zadanie 1: Sprawdź jakim typem węzłów jest nagłówek na stronie business.html
+Type 1
+* Zadanie 2: Sprawdź jakie własności ma obiekt o id 'contact'
+Type 3 Name #text
+* Zadanie 3: zidentyfikuj typy i nazwy obiektów w business.html
+Zrobione
+* Zadanie 4: pokaż zawartość HTML obiektu o id "about"
+Zrobione
+document.querySelector('link').nodeType
+cos takiego
+* Zadanie 5: dodaj nowy paragraf do "About"
+
+* Zadanie 5: dodaj nowy paragraf do "About" tuż za pierwszym paragrafem
+
+* Zadanie 6: dodaj nową pozycję na liście: link do portalu LinkedIn oraz zmień email na pozycji 'Email address"
+
+var elementNode1 = document.createElement('li')
+var elementNode2 = document.createElement('a')
+elementNode2.href="www.pl.pl"
+var textNode = document.createTextNode('Link do czegos tam')
+
+document.querySelector('ul').appendChild(elementNode1).appendChild(elementNode2).appendChild(textNode)
+
+* Zadanie 7: dodaj nową pozycję na liście pomiędzy Facebook a Twitter: link do portalu Youtube
+
+var li = document.createElement('li')
+var link = document.createElement('a')
+link.href="www.youtube.pl"
+var text = document.createTextNode('Youtube')
+var txt1 = document.querySelector('.twitter-icon')
+var ul = document.querySelector('ul')
+ul.insertBefore(li,txt1).appendChild(link).appendChild(text)
+
+* Zadanie 8: usuń obiekt o id "bottom-info"
+
+* Zadanie 9: dokonaj takiej manipulacji stroną, aby była swoim lustrzanym odbiciem
+
+
