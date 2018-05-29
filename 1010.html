@@ -27,38 +27,61 @@ return Math.floor(Math.random()*5);
 }
 let fig=[];
 //w tablicy fig mamy rozmiar w 4 kierunkach od srodka kolejno w lewo, w prawo, w gore, w dol
-let figura=randd;
+let figura=randd();
 switch(figura){
 case 0:
-fig=[1,1,1,1];
+fig[0]=1;
+fig[1]=1;
+fig[2]=1;
+fig[3]=2;
 break;
 case 1:
-fig[2,2,0,0];
+fig[0]=3;
+fig[1]=3;
+fig[2]=0;
+fig[3]=0;
 break;
 case 2:
-fig[0,0,2,2];
+fig[0]=0;
+fig[1]=0;
+fig[2]=3;
+fig[3]=3;
 break;
 case 3:
-fig[3,0,3,0];
+fig[0]=1;
+fig[1]=1;
+fig[2]=0;
+fig[3]=0;
 break;
 case 4:
-fig[0,3,0,3];
+fig[0]=0;
+fig[1]=0;
+fig[2]=1;
+fig[3]=1;
 break;
 case 5:
-fig=[1,4,0,2];
+fig[0]=1;
+fig[1]=0;
+fig[2]=1;
+fig[3]=0;
 break;
-}
+} 
 
-function fun(e){
+function fun(){
+var x;
 	for(let i=0;i<4;i++)
 	{
-	var x=fig[i];
-	for(let j=0;j<x;j++){
-	dif[i].style.backgroundColor=blue;
-	}
+		x=fig[i];
+		for(let j=1;j<=x;j++){
+			if(i==0) dif[55-j].style.backgroundColor="blue";
+			if(i==1) dif[55+j].style.backgroundColor="blue";
+			if(i==2) dif[55+10*j].style.backgroundColor="blue";
+			if(i==3) dif[55-10*j].style.backgroundColor="blue";
+		}
 	}
 }
-document.addEventListener('click',fun);
+fun();
+//document.addEventListener('click',fun);
 </script>
 </body>
 </html>
