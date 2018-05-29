@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<div id="d" style="width:550px; height:1000px;">
+</div>
+<script>
+var dif=[];
+let diw=document.getElementById('d');
+let bry=document.createElement('br');
+for(var i=0;i<100;i++){
+dif[i]=document.createElement('div');
+dif[i].style.backgroundColor="grey";
+dif[i].style.width="50px";
+dif[i].style.height="50px";
+dif[i].style.float="left";
+dif[i].style.border="1px solid black";
+dif[i].id=i;
+diw.appendChild(dif[i]);
+}
+
+
+function fun(e){
+	var odleglosc=Math.abs(e.target.id-x);
+	if(odleglosc==0)
+	e.target.style.backgroundColor="red";
+	if(odleglosc==1||e.target.id%6==x%6&&odleglosc<7&&odleglosc>1){
+	e.target.style.backgroundColor="orange";
+	}
+	else
+	if(odleglosc==2||e.target.id%6==(1+x)%6&&odleglosc<13&&odleglosc>1||e.target.id%6==(x-1)%6&&odleglosc<13&&odleglosc>1||e.target.id%6==x%6&&odleglosc<13&&odleglosc>1){
+	e.target.style.backgroundColor="yellow";
+	}
+}
+document.addEventListener('click',fun);
+</script>
+</body>
+</html>
