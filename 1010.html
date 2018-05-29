@@ -8,7 +8,7 @@
 </div>
 <script>
 //tworzenie planszy
-var dif=[];
+var dif=[100];
 let diw=document.getElementById('d');
 let bry=document.createElement('br');
 for(var i=0;i<100;i++){
@@ -27,6 +27,7 @@ return Math.floor(Math.random()*5);
 }
 let fig=[];
 //w tablicy fig mamy rozmiar w 4 kierunkach od srodka kolejno w lewo, w prawo, w gore, w dol
+function los(){
 let figura=randd();
 switch(figura){
 case 0:
@@ -66,22 +67,25 @@ fig[2]=1;
 fig[3]=0;
 break;
 } 
-
-function fun(){
+}
+function fun(e){
+los();
+let id=parseInt(e.target.id);
 var x;
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
-		for(let j=1;j<=x;j++){
-			if(i==0) dif[55-j].style.backgroundColor="blue";
-			if(i==1) dif[55+j].style.backgroundColor="blue";
-			if(i==2) dif[55+10*j].style.backgroundColor="blue";
-			if(i==3) dif[55-10*j].style.backgroundColor="blue";
+		dif[id].style.backgroundColor="blue";
+		for(var j=0;j<=x;j++){
+			if(i==0) dif[id-j].style.backgroundColor="blue";
+			if(i==1) dif[id+j].style.backgroundColor="blue";
+			if(i==2) dif[id+10*j].style.backgroundColor="blue";
+			if(i==3) dif[id-10*j].style.backgroundColor="blue";
 		}
 	}
 }
-fun();
-//document.addEventListener('click',fun);
+
+document.addEventListener('click',fun);
 </script>
 </body>
 </html>
