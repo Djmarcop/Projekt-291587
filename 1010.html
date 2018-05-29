@@ -2,9 +2,12 @@
 <head>
 </head>
 <body>
+<div id="Dd" style="width:1000px; height:1000px; background-color:green;">
 <div id="d" style="width:550px; height:1000px;">
 </div>
+</div>
 <script>
+//tworzenie planszy
 var dif=[];
 let diw=document.getElementById('d');
 let bry=document.createElement('br');
@@ -18,18 +21,41 @@ dif[i].style.border="1px solid black";
 dif[i].id=i;
 diw.appendChild(dif[i]);
 }
-
+//losowe wybieranie liczby -> figury
+function randd(){
+return Math.floor(Math.random()*5);
+}
+let fig=[];
+//w tablicy fig mamy rozmiar w 4 kierunkach od srodka kolejno w lewo, w prawo, w gore, w dol
+let figura=randd;
+switch(figura){
+case 0:
+fig=[1,1,1,1];
+break;
+case 1:
+fig[2,2,0,0];
+break;
+case 2:
+fig[0,0,2,2];
+break;
+case 3:
+fig[3,0,3,0];
+break;
+case 4:
+fig[0,3,0,3];
+break;
+case 5:
+fig=[1,4,0,2];
+break;
+}
 
 function fun(e){
-	var odleglosc=Math.abs(e.target.id-x);
-	if(odleglosc==0)
-	e.target.style.backgroundColor="red";
-	if(odleglosc==1||e.target.id%6==x%6&&odleglosc<7&&odleglosc>1){
-	e.target.style.backgroundColor="orange";
+	for(let i=0;i<4;i++)
+	{
+	var x=fig[i];
+	for(let j=0;j<x;j++){
+	dif[i].style.backgroundColor=blue;
 	}
-	else
-	if(odleglosc==2||e.target.id%6==(1+x)%6&&odleglosc<13&&odleglosc>1||e.target.id%6==(x-1)%6&&odleglosc<13&&odleglosc>1||e.target.id%6==x%6&&odleglosc<13&&odleglosc>1){
-	e.target.style.backgroundColor="yellow";
 	}
 }
 document.addEventListener('click',fun);
