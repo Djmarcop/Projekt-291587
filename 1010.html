@@ -28,10 +28,11 @@ diw.appendChild(dif[i]);
 //budowanie difow do wyswietlania nastepnego klocka oraz do wyslwietlania aktualnego wyniku
 let dlicz=document.createElement('div');
 let alicz=document.createElement('a');
+alicz.style.background="yellow";
 alicz.innerHTML=0;
 dlicz.style.width="55px";
 dlicz.style.float="right";
-dlicz.style.backgroundColor="white";
+dlicz.style.backgroundColor="green";
 diw.appendChild(dlicz);
 let difm=[50];
 for(var i=0;i<49;i++){
@@ -107,13 +108,14 @@ if(dif[id].style.backgroundColor!="blue"){
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
-		
 		for(var j=0;j<=x;j++){
-		if(id-j>0&&id+j<99&&id+10*j<99&&id-10*j>0){
+		if(id-j>=0&&id+j<=99){
 			if(i==0) if(dif[id-j].style.backgroundColor=="blue") return 1;	
 			if(i==1) if(dif[id+j].style.backgroundColor=="blue") return 1;	
+			if(id+10*j<=99&&id-10*j>=0){
 			if(i==2) if(dif[id+10*j].style.backgroundColor=="blue") return 1;	
-			if(dif[id-10*j].style.backgroundColor=="blue") return 1;
+			if(i==3) if(dif[id-10*j].style.backgroundColor=="blue") return 1;
+			}
 		}
 		else return 1;
 		}
@@ -162,7 +164,7 @@ var x;
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
-		dif[id].style.backgroundColor="blue";
+		difm[id].style.backgroundColor="blue";
 		for(var j=0;j<=x;j++){	
 			if(i==0) difm[id-j].style.backgroundColor="blue";
 			if(i==1) difm[id+j].style.backgroundColor="blue";
@@ -196,12 +198,12 @@ var x;
 	}
 	licznik++;
 	alicz.innerHTML=licznik;
+	los();
+    funmala();
 }
 else{
 console.log("Nie miesci sie");
 }
-los();
-funmala();
 }
 
 
