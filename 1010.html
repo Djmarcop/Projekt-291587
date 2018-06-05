@@ -22,6 +22,10 @@ dif[i].id=i;
 diw.appendChild(dif[i]);
 }
 
+
+
+
+//budowanie difow do wyswietlania nastepnego klocka oraz do wyslwietlania aktualnego wyniku
 let dlicz=document.createElement('div');
 let alicz=document.createElement('a');
 alicz.innerHTML=0;
@@ -29,8 +33,6 @@ dlicz.style.width="55px";
 dlicz.style.float="right";
 dlicz.style.backgroundColor="white";
 diw.appendChild(dlicz);
-
-
 let difm=[50];
 for(var i=0;i<49;i++){
 difm[i]=document.createElement('div');
@@ -42,8 +44,10 @@ difm[i].style.border="1px solid black";
 difm[i].id=i;
 dlicz.appendChild(difm[i]);
 }
-
 dlicz.appendChild(alicz);
+
+
+
 //losowe wybieranie liczby -> figury
 function randd(){
 return Math.floor(Math.random()*5);
@@ -91,6 +95,10 @@ fig[3]=0;
 break;
 } 
 }
+
+
+
+
 //funkcja sprawdzajace, czy bloki sa wolne i czy sie zmieszcza
 function funspr(e){
 let id=parseInt(e.target.id);
@@ -114,6 +122,11 @@ if(dif[id].style.backgroundColor!="blue"){
 }
 else return 1;
 }
+
+
+
+
+
 //funkcja podswietlajaca po najechaniu
 function funk(e){
 console.log("x");
@@ -137,6 +150,9 @@ var x;
 }
 }
 
+
+
+
 //funkcja do wyswietlania nastepnej figury
 function funmala(){
 for(let i=0;i<49;i++)
@@ -155,6 +171,10 @@ var x;
 		}
 	}
 }
+
+
+
+
 
 //glowna funkcja wywolywana przez klikniecie
 let licznik=0;
@@ -183,6 +203,9 @@ console.log("Nie miesci sie");
 los();
 funmala();
 }
+
+
+
 
 //wywolywania funkcji
 los();
