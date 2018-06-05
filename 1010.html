@@ -29,7 +29,9 @@ diw.appendChild(dif[i]);
 let dlicz=document.createElement('div');
 let alicz=document.createElement('a');
 alicz.style.background="yellow";
+alicz.id="alicz";
 alicz.innerHTML=0;
+dlicz.id="dlicz";
 dlicz.style.width="55px";
 dlicz.style.float="right";
 dlicz.style.backgroundColor="green";
@@ -181,6 +183,11 @@ var x;
 //glowna funkcja wywolywana przez klikniecie
 let licznik=0;
 function fun(e){
+if(e.target.id<0||e.target.id>99||e.target.id!=""){
+console.log("Poza plansza");
+return 1;
+}
+else{
 let spr=funspr(e);
 if(!spr){
 let id=parseInt(e.target.id);
@@ -203,6 +210,7 @@ var x;
 }
 else{
 console.log("Nie miesci sie");
+}
 }
 }
 
