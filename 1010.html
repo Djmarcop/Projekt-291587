@@ -21,6 +21,29 @@ dif[i].style.border="1px solid black";
 dif[i].id=i;
 diw.appendChild(dif[i]);
 }
+
+let dlicz=document.createElement('div');
+let alicz=document.createElement('a');
+alicz.innerHTML=0;
+dlicz.style.width="55px";
+dlicz.style.float="right";
+dlicz.style.backgroundColor="white";
+diw.appendChild(dlicz);
+
+
+let difm=[50];
+for(var i=0;i<49;i++){
+difm[i]=document.createElement('div');
+difm[i].style.backgroundColor="lightgrey";
+difm[i].style.width="5px";
+difm[i].style.height="5px";
+difm[i].style.float="left";
+difm[i].style.border="1px solid black";
+difm[i].id=i;
+dlicz.appendChild(difm[i]);
+}
+
+dlicz.appendChild(alicz);
 //losowe wybieranie liczby -> figury
 function randd(){
 return Math.floor(Math.random()*5);
@@ -91,44 +114,51 @@ if(dif[id].style.backgroundColor!="blue"){
 }
 else return 1;
 }
+//funkcja podswietlajaca po najechaniu
+function funk(e){
+console.log("x");
+let spr=funspr(e);
+console.log("x2");
+if(!spr){
+console.log("x3");
+let id=parseInt(e.target.id);
+var x;
+	for(let i=0;i<4;i++)
+	{
+		x=fig[i];
+		dif[id].style.backgroundColor="green";
+		for(var j=0;j<=x;j++){
+			if(i==0) dif[id-j].style.backgroundColor="green";
+			if(i==1) dif[id+j].style.backgroundColor="green";
+			if(i==2) dif[id+10*j].style.backgroundColor="green";
+			if(i==3) dif[id-10*j].style.backgroundColor="green";
+		}
+	}
+}
+}
 
-/*
-function fun(e){
-los();
-let id=parseInt(e.target.id);
+//funkcja do wyswietlania nastepnej figury
+function funmala(){
+for(let i=0;i<49;i++)
+difm[i].style.backgroundColor="lightblue";
+let id=24;
 var x;
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
 		dif[id].style.backgroundColor="blue";
-		for(var j=0;j<=x;j++){
-			if(i==0) dif[id-j].style.backgroundColor="blue";
-			if(i==1) dif[id+j].style.backgroundColor="blue";
-			if(i==2) dif[id+10*j].style.backgroundColor="blue";
-			if(i==3) dif[id-10*j].style.backgroundColor="blue";
+		for(var j=0;j<=x;j++){	
+			if(i==0) difm[id-j].style.backgroundColor="blue";
+			if(i==1) difm[id+j].style.backgroundColor="blue";
+			if(i==2) difm[id+(7*j)].style.backgroundColor="blue";
+			if(i==3) difm[id-(7*j)].style.backgroundColor="blue";
 		}
 	}
 }
-function fun(e){
-los();
-let id=parseInt(e.target.id);
-var x;
-	for(let i=0;i<4;i++)
-	{
-		x=fig[i];
-		dif[id].style.backgroundColor="blue";
-		for(var j=0;j<=x;j++){
-			if(i==0) dif[id-j].style.backgroundColor="blue";
-			if(i==1) dif[id+j].style.backgroundColor="blue";
-			if(i==2) dif[id+10*j].style.backgroundColor="blue";
-			if(i==3) dif[id-10*j].style.backgroundColor="blue";
-		}
-	}
-}
-*/
+
 //glowna funkcja wywolywana przez klikniecie
+let licznik=0;
 function fun(e){
-los();
 let spr=funspr(e);
 if(!spr){
 let id=parseInt(e.target.id);
@@ -144,9 +174,21 @@ var x;
 			if(i==3) dif[id-10*j].style.backgroundColor="blue";
 		}
 	}
+	licznik++;
+	alicz.innerHTML=licznik;
 }
+else{
+console.log("Nie miesci sie");
 }
+los();
+funmala();
+}
+
+//wywolywania funkcji
+los();
+funmala();
 document.addEventListener('click',fun);
+document.addEventListener('onmouseover',funk);
 
 </script>
 </body>
