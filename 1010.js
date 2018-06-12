@@ -1,7 +1,4 @@
 
-
-
-
 //tworzenie planszy
 var dif=[100];
 let diw=document.getElementById('d');
@@ -16,8 +13,6 @@ dif[i].style.border="1px solid black";
 dif[i].id=i;
 diw.appendChild(dif[i]);
 }
-
-
 
 //budowanie difow do wyswietlania nastepnego klocka oraz do wyslwietlania aktualnego wyniku
 let dlicz=document.createElement('div');
@@ -43,15 +38,11 @@ dlicz.appendChild(difm[i]);
 }
 dlicz.appendChild(alicz);
 
-
-
 //losowe wybieranie liczby -> figury
 function randd(){
 return Math.floor(Math.random()*5);
 }
 let fig=[];
-
-
 
 //w tablicy fig mamy rozmiar w 4 kierunkach od srodka kolejno w lewo, w prawo, w gore, w dol
 function los(){
@@ -98,6 +89,10 @@ break;
 
 
 
+
+
+
+
 //funkcja sprawdzajace, czy bloki sa wolne czyli czy sie zmieszcza
 function funspr(e){
 let id=parseInt(e.target.id);
@@ -107,15 +102,10 @@ if(dif[id].style.backgroundColor!="blue"){
 	{
 		x=fig[i];
 		for(var j=0;j<=x;j++){
-		if(id-j>=0&&id+j<=99){
-			if(i==0) if(dif[id-j].style.backgroundColor=="blue") return 1;	
-			if(i==1) if(dif[id+j].style.backgroundColor=="blue") return 1;	
-			if(id+10*j<=99&&id-10*j>=0){
-			if(i==2) if(dif[id+10*j].style.backgroundColor=="blue") return 1;	
-			if(i==3) if(dif[id-10*j].style.backgroundColor=="blue") return 1;
-			}
-		}
-		else return 1;
+			if(i==0) if(id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
+			if(i==1) if(id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
+			if(i==2) if(id+10*j<100) {if(dif[id+10*j].style.backgroundColor=="blue") return 1;}	else return 1;
+			if(i==3) if(id-10*j>-1) {if(dif[id-10*j].style.backgroundColor=="blue") return 1;}else return 1;
 		}
 	}
 	return 0;
@@ -131,15 +121,10 @@ if(dif[id].style.backgroundColor!="blue"){
 	{
 		x=fig[i];
 		for(var j=0;j<=x;j++){
-		if(id-j>=0&&id+j<=99){
-			if(i==0) if(dif[id-j].style.backgroundColor=="blue") return 1;	
-			if(i==1) if(dif[id+j].style.backgroundColor=="blue") return 1;	
-			if(id+10*j<100&&id-10*j>=0){
-			if(i==2) if(dif[id+10*j].style.backgroundColor=="blue") return 1;	
-			if(i==3) if(dif[id-10*j].style.backgroundColor=="blue") return 1;
-			}
-		}
-		else return 1;
+			if(i==0) if(id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
+			if(i==1) if(id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
+			if(i==2) if(id+10*j<100) {if(dif[id+10*j].style.backgroundColor=="blue") return 1;}	else return 1;
+			if(i==3) if(id-10*j>-1) {if(dif[id-10*j].style.backgroundColor=="blue") return 1;}else return 1;
 		}
 	}
 	return 0;
@@ -161,14 +146,10 @@ var x;
 		x=fig[i];
 		dif[id].style.backgroundColor="lightgreen";
 		for(var j=0;j<=x;j++){
-			if(id-j>=0&&id+j<=99){
-			if(i==0) dif[id-j].style.backgroundColor="lightgreen";
-			if(i==1) dif[id+j].style.backgroundColor="lightgreen";
-			if(id+10*j<=99&&id-10*j>=0){
-			if(i==2) dif[id+10*j].style.backgroundColor="lightgreen";
-			if(i==3) dif[id-10*j].style.backgroundColor="lightgreen";
-		}
-		}
+			if(i==0&&id-j>=0) dif[id-j].style.backgroundColor="lightgreen";
+			if(i==1&&id+j<100) dif[id+j].style.backgroundColor="lightgreen";
+			if(i==2&&id+10*j<100) dif[id+10*j].style.backgroundColor="lightgreen";
+			if(i==3&&id-10*j>-1) dif[id-10*j].style.backgroundColor="lightgreen";
 		}
 	}
 }
@@ -184,14 +165,10 @@ var x;
 		x=fig[i];
 		dif[id].style.backgroundColor="grey";
 		for(var j=0;j<=x;j++){
-			if(id-j>=0&&id+j<=99){
-			if(i==0) dif[id-j].style.backgroundColor="grey";
-			if(i==1) dif[id+j].style.backgroundColor="grey";
-			if(id+10*j<=99&&id-10*j>=0){
-			if(i==2) dif[id+10*j].style.backgroundColor="grey";
-			if(i==3) dif[id-10*j].style.backgroundColor="grey";
-		}
-		}
+			if(i==0&&id-j>=0) dif[id-j].style.backgroundColor="grey";
+			if(i==1&&id+j<100) dif[id+j].style.backgroundColor="grey";
+			if(i==2&&id+10*j<100) dif[id+10*j].style.backgroundColor="grey";
+			if(i==3&&id-10*j>-1) dif[id-10*j].style.backgroundColor="grey";
 		}
 	}
 }
@@ -231,6 +208,7 @@ var x;
 
 //glowna funkcja wywolywana przez klikniecie
 let licznik=0;
+let bul=[100];
 function fun(e){
 if((e.target.id<0||e.target.id>99)&&e.target.id!=""){
 console.log("Poza plansza");
@@ -246,14 +224,30 @@ var x;
 		x=fig[i];
 		dif[id].style.backgroundColor="blue";
 		for(var j=0;j<=x;j++){
-			if(i==0) dif[id-j].style.backgroundColor="blue";
-			if(i==1) dif[id+j].style.backgroundColor="blue";
-			if(i==2) dif[id+10*j].style.backgroundColor="blue";
-			if(i==3) dif[id-10*j].style.backgroundColor="blue";
+			if(i==0) {dif[id-j].style.backgroundColor="blue"; bul[id-j]=1}
+			if(i==1) {dif[id+j].style.backgroundColor="blue"; bul[id+j]=1}
+			if(i==2) {dif[id+10*j].style.backgroundColor="blue";bul[id+10*j]=1}
+			if(i==3) {dif[id-10*j].style.backgroundColor="blue"; bul[id-10*j]=1}
 		}
 	}
 	licznik++;
 	alicz.innerHTML=licznik;
+	let d=0,s=0;
+	for(let h=0; h<10; h++){
+		d=0;
+		for(let g=0; g<10; g++){
+			d+=bul[10*h+g];
+		}
+		if(d==10)(console.log("Poziomo 10"));
+	}
+	
+	for(let h=0; h<10; h++){
+		d=0;
+		for(let g=0; g<10; g++){
+			d+=bul[h+10*g];
+		}
+		if(d==10)(console.log("Pionowo 10"));
+	}
 	los();
     funmala();
 }
