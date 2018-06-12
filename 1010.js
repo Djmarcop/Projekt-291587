@@ -1,12 +1,4 @@
-<html>
-<head>
-</head>
-<body>
-<div id="Dd" style="width:1000px; height:1000px; background-color:green;">
-<div id="d" style="width:550px; height:1000px;">
-</div>
-</div>
-<script>
+
 
 
 
@@ -169,11 +161,14 @@ var x;
 		x=fig[i];
 		dif[id].style.backgroundColor="lightgreen";
 		for(var j=0;j<=x;j++){
+			if(id-j>=0&&id+j<=99){
 			if(i==0) dif[id-j].style.backgroundColor="lightgreen";
 			if(i==1) dif[id+j].style.backgroundColor="lightgreen";
+			if(id+10*j<=99&&id-10*j>=0){
 			if(i==2) dif[id+10*j].style.backgroundColor="lightgreen";
-			console.log(id+10*j);
 			if(i==3) dif[id-10*j].style.backgroundColor="lightgreen";
+		}
+		}
 		}
 	}
 }
@@ -189,10 +184,14 @@ var x;
 		x=fig[i];
 		dif[id].style.backgroundColor="grey";
 		for(var j=0;j<=x;j++){
+			if(id-j>=0&&id+j<=99){
 			if(i==0) dif[id-j].style.backgroundColor="grey";
 			if(i==1) dif[id+j].style.backgroundColor="grey";
+			if(id+10*j<=99&&id-10*j>=0){
 			if(i==2) dif[id+10*j].style.backgroundColor="grey";
 			if(i==3) dif[id-10*j].style.backgroundColor="grey";
+		}
+		}
 		}
 	}
 }
@@ -271,7 +270,3 @@ los();
 funmala();
 document.addEventListener('click',fun);
 document.addEventListener('onmouseover',funk);
-
-</script>
-</body>
-</html>
