@@ -251,6 +251,15 @@ var x;
 		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey"} };
 	}
 	alicz.innerHTML=licznik;
+	x=false;
+	for(s=0;s<100;s++)
+	{
+		if(funkspr(dif[s])==0){ x=true; break};
+	}
+	if(x==0){
+	window.alert("PRZEGRALES");
+	return 1;
+	}
 	los();
     funmala();
 }
