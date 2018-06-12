@@ -96,14 +96,15 @@ break;
 //funkcja sprawdzajace, czy bloki sa wolne czyli czy sie zmieszcza
 function funspr(e){
 let id=parseInt(e.target.id);
-var x;
+let x,j,tt;
+tt=id-id%10;
 if(dif[id].style.backgroundColor!="blue"){
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
-		for(var j=0;j<=x;j++){
-			if(i==0) if(id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
-			if(i==1) if(id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
+		for(j=0;j<=x;j++){
+			if(i==0) if((tt==(id-j-(id-j)%10))&&id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
+			if(i==1) if((tt==(id+j-(id+j)%10))&&id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
 			if(i==2) if(id+10*j<100) {if(dif[id+10*j].style.backgroundColor=="blue") return 1;}	else return 1;
 			if(i==3) if(id-10*j>-1) {if(dif[id-10*j].style.backgroundColor=="blue") return 1;}else return 1;
 		}
@@ -115,14 +116,15 @@ else return 1;
 
 function funkspr(e){
 let id=parseInt(e.id);
-var x;
+let j,x;
+let tt=id-id%10;
 if(dif[id].style.backgroundColor!="blue"){
 	for(let i=0;i<4;i++)
 	{
 		x=fig[i];
-		for(var j=0;j<=x;j++){
-			if(i==0) if(id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
-			if(i==1) if(id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
+		for(j=0;j<=x;j++){
+			if(i==0) if((tt==(id-j-(id-j)%10))&&id-j>=0) {if(dif[id-j].style.backgroundColor=="blue") return 1;} else return 1;
+			if(i==1) if((tt==(id+j-(id+j)%10))&&id+j<100) {if(dif[id+j].style.backgroundColor=="blue") return 1;}	else return 1;
 			if(i==2) if(id+10*j<100) {if(dif[id+10*j].style.backgroundColor=="blue") return 1;}	else return 1;
 			if(i==3) if(id-10*j>-1) {if(dif[id-10*j].style.backgroundColor=="blue") return 1;}else return 1;
 		}
@@ -230,9 +232,7 @@ var x;
 			if(i==3) {dif[id-10*j].style.backgroundColor="blue"; bul[id-10*j]=1}
 		}
 	}
-	licznik++;
-	alicz.innerHTML=licznik;
-	
+	licznik++; 
 	//sprawdzanie czy suma w pionie/poziomie jest rowna 10; jesli tak to usuwamy bloki i dodajemy 10 punktow
 	let d=0,s=0;
 	for(let h=0; h<10; h++){
@@ -250,6 +250,7 @@ var x;
 		}
 		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey"} };
 	}
+	alicz.innerHTML=licznik;
 	los();
     funmala();
 }
