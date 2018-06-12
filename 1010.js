@@ -232,13 +232,15 @@ var x;
 	}
 	licznik++;
 	alicz.innerHTML=licznik;
+	
+	//sprawdzanie czy suma w pionie/poziomie jest rowna 10; jesli tak to usuwamy bloki i dodajemy 10 punktow
 	let d=0,s=0;
 	for(let h=0; h<10; h++){
 		d=0;
 		for(let g=0; g<10; g++){
 			d+=bul[10*h+g];
 		}
-		if(d==10)(console.log("Poziomo 10"));
+		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[10*h+f]=0; dif[10*h+f].style.backgroundColor="grey"} };
 	}
 	
 	for(let h=0; h<10; h++){
@@ -246,7 +248,7 @@ var x;
 		for(let g=0; g<10; g++){
 			d+=bul[h+10*g];
 		}
-		if(d==10)(console.log("Pionowo 10"));
+		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey"} };
 	}
 	los();
     funmala();
