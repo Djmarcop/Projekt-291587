@@ -40,13 +40,18 @@ dlicz.appendChild(alicz);
 
 //losowe wybieranie liczby -> figury
 function randd(){
-return Math.floor(Math.random()*5);
+return Math.floor(Math.random()*10);
 }
 let fig=[];
 
 //w tablicy fig mamy rozmiar w 4 kierunkach od srodka kolejno w lewo, w prawo, w gore, w dol
 function los(){
+let fifi;
 let figura=randd();
+if(fifi==figura){
+los();
+}
+fifi=figura;
 switch(figura){
 case 0:
 fig[0]=1;
@@ -55,7 +60,7 @@ fig[2]=1;
 fig[3]=2;
 break;
 case 1:
-fig[0]=3;
+fig[0]=2;
 fig[1]=2;
 fig[2]=0;
 fig[3]=0;
@@ -63,7 +68,7 @@ break;
 case 2:
 fig[0]=0;
 fig[1]=0;
-fig[2]=3;
+fig[2]=2;
 fig[3]=2;
 break;
 case 3:
@@ -80,6 +85,36 @@ fig[3]=1;
 break;
 case 5:
 fig[0]=1;
+fig[1]=0;
+fig[2]=1;
+fig[3]=0;
+break;
+case 6:
+fig[0]=0;
+fig[1]=0;
+fig[2]=0;
+fig[3]=1;
+break;
+case 7:
+fig[0]=1;
+fig[1]=0;
+fig[2]=0;
+fig[3]=0;
+break;
+case 8:
+fig[0]=1;
+fig[1]=1;
+fig[2]=1;
+fig[3]=1;
+break;
+case 9:
+fig[0]=1;
+fig[1]=0;
+fig[2]=0;
+fig[3]=0;
+break;
+case 10:
+fig[0]=0;
 fig[1]=0;
 fig[2]=1;
 fig[3]=0;
@@ -239,25 +274,21 @@ var x;
 		d=0;
 		for(let g=0; g<10; g++){
 			d+=bul[10*h+g];
+			s+=bul[h+10*g];
 		}
-		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[10*h+f]=0; dif[10*h+f].style.backgroundColor="grey"} };
+		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[10*h+f]=0; dif[10*h+f].style.backgroundColor="grey";} };
+		if(s==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey";} };
 	}
-	
-	for(let h=0; h<10; h++){
-		d=0;
-		for(let g=0; g<10; g++){
-			d+=bul[h+10*g];
-		}
-		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey"} };
-	}
+
 	alicz.innerHTML=licznik;
+	// sprawdzenie czy fiugra zmiesci sie na planszy
 	x=false;
 	for(s=0;s<100;s++)
 	{
 		if(funkspr(dif[s])==0){ x=true; break};
 	}
 	if(x==0){
-	window.alert("PRZEGRALES");
+	window.alert("PRZEGRALES. Suma punktów: "+licznik);
 	return 1;
 	}
 	los();
