@@ -272,12 +272,13 @@ var x;
 	let d=0,s=0;
 	for(let h=0; h<10; h++){
 		d=0;
+		s=0;
 		for(let g=0; g<10; g++){
 			d+=bul[10*h+g];
 			s+=bul[h+10*g];
 		}
-		if(d==10){ licznik+=10; for(let f=0;f<10;f++) { bul[10*h+f]=0; dif[10*h+f].style.backgroundColor="grey";} };
-		if(s==10){ licznik+=10; for(let f=0;f<10;f++) { bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey";} };
+		if(d==10){ licznik+=10; for(let f=0;f<10;f++){ bul[10*h+f]=0; dif[10*h+f].style.backgroundColor="grey";} d=0;};
+		if(s==10){ licznik+=10; for(let f=0;f<10;f++){ bul[h+10*f]=0; dif[h+10*f].style.backgroundColor="grey";} s=0;};
 	}
 
 	alicz.innerHTML=licznik;
